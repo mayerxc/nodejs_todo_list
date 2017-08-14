@@ -11,7 +11,7 @@ $(document).ready(function(){
         data: todo,
         success: function(data){
           //do something with the data via front-end framework
-          console.log('this is the data you are successfully saving to db in ajax: ' + data);
+          console.log('this is the data you are successfully saving to db in ajax: ' + JSON.stringify(data));
           location.reload();
         }
       });
@@ -22,13 +22,13 @@ $(document).ready(function(){
 
   $('li').on('click', function(){
       var item = $(this).text().replace(/ /g,"-");
-      console.log('this is the item you are going to delete: ' + item);
+      console.log('this is the item you are going to delete: ' + JSON.stringify(item));
       $.ajax({
         type: 'DELETE',
         url: '/todo/' + item,
         success: function(data){
           //do something with the data via front-end framework
-          console.log('You successfully deleted this data: '+ data);
+          console.log( 'You successfully deleted this data: '+ JSON.stringify(data) );
           location.reload();
         }
       });

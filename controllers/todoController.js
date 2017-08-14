@@ -1,11 +1,17 @@
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+require('dotenv').config();
 
 //var data = [{item:'get milk'}, {item:'walk dog'}, {item:'kick ass!'}];
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 
-//connect to the database
-mongoose.connect('mongodb://test:test@ds017246.mlab.com:17246/mayerxc');
+// other database named 'mongodb://test:test@ds017246.mlab.com:17246/mayerxc');
+var mongoDatabase= 'mongodb://' + process.env.DBUSER + ':' + process.env.DBPASSWORD + '@ds028310.mlab.com:28310/test-azure'
+
+console.log(mongoDatabase);
+
+//connect to the database testing new database
+mongoose.connect(mongoDatabase); 
 
 //create a schema - this is like a blueprint
 var todoSchema = new mongoose.Schema({
